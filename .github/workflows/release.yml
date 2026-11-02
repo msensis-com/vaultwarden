@@ -2,8 +2,8 @@ name: Release
 permissions: {}
 
 concurrency:
-  # Apply concurrency control only on the upstream repo
-  group: ${{ github.repository == 'dani-garcia/vaultwarden' && format('{0}-{1}', github.workflow, github.ref) || github.run_id }}
+  # Apply concurrency control only on the msensis-com repo
+  group: ${{ github.repository == 'msensis-com/vaultwarden' && format('{0}-{1}', github.workflow, github.ref) || github.run_id }}
   # Don't cancel other runs when creating a tag
   cancel-in-progress: ${{ github.ref_type == 'branch' }}
 
@@ -37,8 +37,8 @@ defaults:
 jobs:
   docker-build:
     name: Build Vaultwarden containers
-    if: ${{ github.repository == 'dani-garcia/vaultwarden' }}
-    environment: 
+    if: ${{ github.repository == 'msensis-com/vaultwarden' }}
+    environment:
       name: release
       deployment: false
     permissions:
